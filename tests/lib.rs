@@ -76,7 +76,7 @@ fn can_connect_via_unix_socket() {
             }
 
             if one_second <= start.elapsed() {
-                panic!(format!("neovim socket not found at '{:?}'", &socket_path));
+                panic!("neovim socket not found at '{:?}'", &socket_path);
             }
         }
     }
@@ -98,17 +98,17 @@ fn can_connect_via_unix_socket() {
     match servername.as_str() {
         Some(ref name) => {
             if Path::new(name) != socket_path {
-                panic!(format!(
+                panic!(
                     "Server name does not match socket path! {} != {}",
                     name,
                     socket_path.to_str().unwrap()
-                ));
+                );
             }
         }
-        None => panic!(format!(
+        None => panic!(
             "Server name does not match socket path! {:?} != {}",
             servername,
             socket_path.to_str().unwrap()
-        )),
+        ),
     }
 }
